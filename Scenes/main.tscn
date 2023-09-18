@@ -44,10 +44,9 @@ collision_layer = 4
 [node name="DeathZone" parent="." instance=ExtResource("4_u1c7y")]
 position = Vector2(0, 380)
 
-[node name="BrickSpawner" type="Node" parent="." node_paths=PackedStringArray("spwan_start")]
+[node name="BrickSpawner" type="Node" parent="."]
 script = ExtResource("6_urb0l")
 brick_scene = ExtResource("7_at8vf")
-spwan_start = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -213)
+position = Vector2(0, -179)

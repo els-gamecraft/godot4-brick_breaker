@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw5i2ac5lf3bd"]
+[gd_scene load_steps=5 format=3 uid="uid://cw5i2ac5lf3bd"]
 
 [ext_resource type="FontFile" uid="uid://b4pqfbvte11k6" path="res://Assets/VT323-Regular.ttf" id="1_4en2b"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_q3e01"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h735j"]
-bg_color = Color(0.839216, 0.137255, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovyk1"]
+bg_color = Color(0.807843, 0.0470588, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18ikp"]
+bg_color = Color(0, 0.713726, 0.380392, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_q3e01")
@@ -43,7 +46,7 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="GameLostContainer"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_h735j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ovyk1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameLostContainer/Panel"]
 layout_mode = 1
@@ -63,4 +66,36 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Restart Game"
 
+[node name="LevelWonContainer" type="CenterContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="LevelWonContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_18ikp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelWonContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="LevelWonContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "YOU WON!"
+horizontal_alignment = 1
+
+[node name="LevelWonButton" type="Button" parent="LevelWonContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "NEXT LEVEL -->"
+
 [connection signal="pressed" from="GameLostContainer/Panel/VBoxContainer/GameLostButton" to="." method="_on_game_lost_button_pressed"]
+[connection signal="pressed" from="LevelWonContainer/Panel/VBoxContainer/LevelWonButton" to="." method="_on_level_won_button_pressed"]
