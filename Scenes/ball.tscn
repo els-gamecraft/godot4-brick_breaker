@@ -1,18 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://camhby2xggr3s"]
+[gd_scene load_steps=5 format=3 uid="uid://ddnr0s0sc1sx4"]
 
-[ext_resource type="Script" path="res://Scenes/ball.gd" id="1_pr8ma"]
-[ext_resource type="Texture2D" uid="uid://c8l7ke1ygg27h" path="res://Assets/Ball.png" id="1_q2ekr"]
+[ext_resource type="Texture2D" uid="uid://c8l7ke1ygg27h" path="res://Assets/Ball.png" id="1_2fx00"]
+[ext_resource type="Script" path="res://Scenes/ball.gd" id="1_4j7fr"]
+[ext_resource type="AudioStream" uid="uid://dwxcuqy720kp" path="res://Assets/Sounds/BounceSound.wav" id="3_wkopm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5s4d0"]
-radius = 32.249
+[sub_resource type="CircleShape2D" id="CircleShape2D_mt3eq"]
+radius = 32.0
 
 [node name="Ball" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 motion_mode = 1
-script = ExtResource("1_pr8ma")
+script = ExtResource("1_4j7fr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_q2ekr")
+texture = ExtResource("1_2fx00")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_5s4d0")
+shape = SubResource("CircleShape2D_mt3eq")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wkopm")
+volume_db = 10.0
